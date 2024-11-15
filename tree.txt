@@ -1,0 +1,24 @@
+{
+	It's alive?
+	{
+		Stone
+	}
+	{
+		Person
+	}
+}
+{
+	It's alive?
+	{
+		Stone
+	}
+	{
+		Animal
+		{
+			Person
+		}
+		{
+			Chapa
+		}
+	}
+}

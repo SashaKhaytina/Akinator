@@ -1,0 +1,21 @@
+digraph
+{
+rankdir = TB;
+POINT_0x5d40bfd14480[shape=Mrecord, label = "It's alive?", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd14640[shape=Mrecord, label = "Color", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd16590[shape=Mrecord, label = "Stone", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd164b0[shape=Mrecord, label = "Red", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd14560[shape=Mrecord, label = "Animal", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd16210[shape=Mrecord, label = "Person", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd16130[shape=Mrecord, label = "Cat", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd163d0[shape=Mrecord, label = "Chapa", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd162f0[shape=Mrecord, label = "Milka", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd14480 -> POINT_0x5d40bfd14640
+POINT_0x5d40bfd14480 -> POINT_0x5d40bfd14560
+POINT_0x5d40bfd14640 -> POINT_0x5d40bfd16590
+POINT_0x5d40bfd14640 -> POINT_0x5d40bfd164b0
+POINT_0x5d40bfd14560 -> POINT_0x5d40bfd16210
+POINT_0x5d40bfd14560 -> POINT_0x5d40bfd16130
+POINT_0x5d40bfd16130 -> POINT_0x5d40bfd163d0
+POINT_0x5d40bfd16130 -> POINT_0x5d40bfd162f0
+}

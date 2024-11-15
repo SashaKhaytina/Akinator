@@ -1,0 +1,9 @@
+digraph
+{
+rankdir = TB;
+POINT_0x5d40bfd14480[shape=Mrecord, label = "It's alive?", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd14640[shape=Mrecord, label = "Stone", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd14560[shape=Mrecord, label = "Person", style="filled",fillcolor="#AFEEEE"]
+POINT_0x5d40bfd14480 -> POINT_0x5d40bfd14640
+POINT_0x5d40bfd14480 -> POINT_0x5d40bfd14560
+}
