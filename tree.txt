@@ -18,7 +18,7 @@
 			Person
 		}
 		{
-			Chapa
+			Dog
 		}
 	}
 }

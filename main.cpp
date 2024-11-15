@@ -3,6 +3,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+#include "Stack/stack_commands.h"
+#include "Stack/errors.h"
+#include "Stack/utils.h"
+
+
 typedef char Node_t; // nfr
 
 
@@ -58,7 +64,8 @@ void graph_create_point(Node* node, FILE* file); // при вызове тут �
 void to_do_log_file(ForDump* st_dump);
 
 
-
+void definition(Tree* tree, Node_t* object);
+bool bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack, bool* found_object);
 
 
 
@@ -73,6 +80,8 @@ int main()
     ForDump st_dump = {};
 
     print_file_tree(file, tree.root, 0);
+    // char* c = "Stone";
+    // definition(&tree, c);
 
     dump(tree.root, &st_dump);
     print_tree(tree.root);
@@ -89,6 +98,21 @@ int main()
 
     run_play(&tree);
     dump(tree.root, &st_dump);
+
+    char* c = "Stone";
+    definition(&tree, c);
+
+    c = "Red";
+    definition(&tree, c);
+
+    c = "Blue";
+    definition(&tree, c);
+    
+    c = "Person";
+    definition(&tree, c);
+    
+    c = "Dog";
+    definition(&tree, c);
 
     // add_new_node(50, tree.root);
     // dump(tree.root, &st_dump);
@@ -359,72 +383,107 @@ StatusEndPlay play_mystery(Node* perent, Node** last_node)
 
 
 
+// Чтобы сравнить - все поделить по функциям, и вывод просто делать отдельно. А там массивы сравнить.
 
+void definition(Tree* tree, Node_t* object) // можно массив: [] (из да и нет) (А потом сверху восстановим)
+{
+    // int way_to_object[MAX_DEEP_TREE] = {};
+    Stack stack = {};
+    default_stack_ctor(&stack, 32);
+    // for (size_t i = 0; i < MAX_DEEP_TREE; i++) way_to_object[i] = -1;
 
-// void definition(Tree* tree, Node_t* object) // можно массив: [] (из да и нет) (А потом сверху восстановим)
-// {
-//     int way_to_object[MAX_DEEP_TREE] = {}; 
-//     for (size_t i = 0; i < MAX_DEEP_TREE; i++) way_to_object[i] = -1;
+    bool found_object = false;
 
-//     bool found_object = false;
+    found_object = bilding_way_to_object(tree->root, object, &stack, &found_object);
+    // printf("I do it\n");
 
-//     found_object = bilding_way_to_object(tree->root, object, way_to_object, &found_object);
+    if (!found_object) printf("No this object in Tree\n");
+    else  // значит путь нашел
+    {
+        // тут надо вытаскивать путь из стека и по нему строить определение
+        // запомним size стека
+        size_t len_way = stack.size;
 
-//     if (!found_object) printf("No this object in Tree\n");
-//     else  // значит путь нашел
-//     {
-//         // тут надо вытаскивать путь из стека и по нему строить определение
-//         // запомним size стека
-//         int size = 0;
-//         // int way_to_object[MAX_DEEP_TREE] = {}; 
-//         // 1) разворачиваем  -> получаем way_to_object
-//         Node* current_node = tree->root;
-//         for (int i = 0; i < size; i++)
-//         {
-//             if (way_to_object[i] == 1) // вправо
-//             {
-//                 printf("%s ", current_node->data);
-//                 current_node = current_node->right;
-//             }
-//             else
-//             {
-//                 printf("NO %s ", current_node->data);
-//                 current_node = current_node->left;
-//             }
-//         }
-//     }
-// }
+        int way_to_object[MAX_DEEP_TREE] = {}; 
+        // 1) разворачиваем  -> получаем way_to_object
+        for (size_t i = 0; i < len_way; i++)
+        {
+            size_t current_size = stack.size;
+            StackElem_t pop_elem = 0;
+            stack_pop(&stack, &pop_elem);
+            way_to_object[current_size - 1] = (int) pop_elem;
+        }
 
 
 
-// bool bilding_way_to_object(Node* current_node, Node_t* object, int* way_to_object, bool* found_object)
-// {
-//     // if (strcmp(current_node->data, object) == 0)
-//     // Поставим переменную-датчик (дошли мы до этой ячейки или нет)
-//     if (*found_object == true) return;
 
-//     if (strcmp(current_node->data, object) == 0)
-//     {
-//         *found_object = true;
-//         return;
-//     }
+        // Читаю из массива путь
+        printf("Definition %s: ", object);
+        Node* current_node = tree->root;
+        for (size_t i = 0; i < len_way; i++)
+        {
+            if (way_to_object[i] == 1) // вправо
+            {
+                printf("%s ", current_node->data);
+                current_node = current_node->right;
+            }
+            else
+            {
+                printf("NO %s ", current_node->data);
+                current_node = current_node->left;
+            }
+        }
 
-//     if (current_node->right)
-//     {
-//         // push 1 (вправо)
-//         if (bilding_way_to_object(current_node->right, object, way_to_object, found_object)) return true;
-//         else ; // pop
-//     }
-//     if (current_node->left)
-//     {
-//         // push 0 (влево)
-//         if (bilding_way_to_object(current_node->left, object, way_to_object, found_object)) return true;
-//         else ; // pop
-//     }
+        printf("\n");
+    }
+}
 
-//     return false;
+
+
+bool bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack, bool* found_object)
+{
+    // if (strcmp(current_node->data, object) == 0)
+    // Поставим переменную-датчик (дошли мы до этой ячейки или нет)
+    // printf("IN bilding_way_to_object\n");
+    // print_stack_info(stack, OK);
+    // printf("%s - data now\n", current_node->data);
+    if (*found_object == true) return true;
+
+    if (strcmp(current_node->data, object) == 0)
+    {
+        *found_object = true;
+        return true;
+    }
+
+    if (current_node->right)
+    {
+        // printf("want Go_to_right\n");
+        stack_push(stack, 1); // push 1 (вправо) 
+        if (bilding_way_to_object(current_node->right, object, stack, found_object)) return true;
+        else 
+        {
+            // printf("else right\n");
+            StackElem_t pop_elem = 0;
+            // print_stack_info(stack, OK);
+            stack_pop(stack, &pop_elem); // pop
+        }
+    }
+    if (current_node->left)
+    {
+        // printf("want Go_to_left\n");
+        stack_push(stack, 0); // push 0 (влево)
+        if (bilding_way_to_object(current_node->left, object, stack, found_object)) return true;
+        else 
+        {
+            StackElem_t pop_elem = 0;
+            stack_pop(stack, &pop_elem); // pop
+        }
+    }
+
+    // printf("NO here\n");
+  return false;
     
-// }
+}
 
 
 
