@@ -1,13 +1,42 @@
 digraph
 {
+bgcolor="#F2EECB";
 rankdir = TB;
-POINT_0x61fda3fa72a0[shape=Mrecord, label = "It's alive?", style="filled",fillcolor="#AFEEEE"]
-POINT_0x61fda3fa7460[shape=Mrecord, label = "Stone", style="filled",fillcolor="#AFEEEE"]
-POINT_0x61fda3fa7380[shape=Mrecord, label = "Animal", style="filled",fillcolor="#AFEEEE"]
-POINT_0x61fda3fa8020[shape=Mrecord, label = "Person", style="filled",fillcolor="#AFEEEE"]
-POINT_0x61fda3fa7f40[shape=Mrecord, label = "Monkey", style="filled",fillcolor="#AFEEEE"]
-POINT_0x61fda3fa72a0 -> POINT_0x61fda3fa7460
-POINT_0x61fda3fa72a0 -> POINT_0x61fda3fa7380
-POINT_0x61fda3fa7380 -> POINT_0x61fda3fa8020
-POINT_0x61fda3fa7380 -> POINT_0x61fda3fa7f40
+POINT_0x5b0c899a1490[shape=Mrecord, label = "It's alive?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5b0c899a1980[shape=Mrecord, label = "It's casting?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5b0c899a1a60[shape=Mrecord, label = "It's magic think?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5b0c899a1b40[shape=Mrecord, label = "It's for seat?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5b0c899a2ab0[shape=Mrecord, label = "Table", style="filled",fillcolor="#F9EA6B"]
+POINT_0x5b0c899a29d0[shape=Mrecord, label = "Chear", style="filled",fillcolor="#F9EA6B"]
+POINT_0x5b0c899a1c20[shape=Mrecord, label = "Howler", style="filled",fillcolor="#F9EA6B"]
+POINT_0x5b0c899a1d00[shape=Mrecord, label = "Nearly Headless Nick", style="filled",fillcolor="#F9EA6B"]
+POINT_0x5b0c899a1de0[shape=Mrecord, label = "It's Hogwarts professor?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5b0c899a1ec0[shape=Mrecord, label = "It's student?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5b0c899a1fa0[shape=Mrecord, label = "It's death eaters?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5b0c899a2080[shape=Mrecord, label = "Garrick Ollivander", style="filled",fillcolor="#F9EA6B"]
+POINT_0x5b0c899a2160[shape=Mrecord, label = "Lucius Malfoy", style="filled",fillcolor="#F9EA6B"]
+POINT_0x5b0c899a2240[shape=Mrecord, label = "It's girl?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5b0c899a2e50[shape=Mrecord, label = "Harry Potter", style="filled",fillcolor="#F9EA6B"]
+POINT_0x5b0c899a2d70[shape=Mrecord, label = "Hermione Jean Granger", style="filled",fillcolor="#F9EA6B"]
+POINT_0x5b0c899a2320[shape=Mrecord, label = "It's woman?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5b0c899a2400[shape=Mrecord, label = "Albus Percival Wulfric Brian Dumbledore", style="filled",fillcolor="#F9EA6B"]
+POINT_0x5b0c899a24e0[shape=Mrecord, label = "Minerva McGonagall", style="filled",fillcolor="#F9EA6B"]
+POINT_0x5b0c899a1490 -> POINT_0x5b0c899a1980
+POINT_0x5b0c899a1490 -> POINT_0x5b0c899a1de0
+POINT_0x5b0c899a1980 -> POINT_0x5b0c899a1a60
+POINT_0x5b0c899a1980 -> POINT_0x5b0c899a1d00
+POINT_0x5b0c899a1a60 -> POINT_0x5b0c899a1b40
+POINT_0x5b0c899a1a60 -> POINT_0x5b0c899a1c20
+POINT_0x5b0c899a1b40 -> POINT_0x5b0c899a2ab0
+POINT_0x5b0c899a1b40 -> POINT_0x5b0c899a29d0
+POINT_0x5b0c899a1de0 -> POINT_0x5b0c899a1ec0
+POINT_0x5b0c899a1de0 -> POINT_0x5b0c899a2320
+POINT_0x5b0c899a1ec0 -> POINT_0x5b0c899a1fa0
+POINT_0x5b0c899a1ec0 -> POINT_0x5b0c899a2240
+POINT_0x5b0c899a1fa0 -> POINT_0x5b0c899a2080
+POINT_0x5b0c899a1fa0 -> POINT_0x5b0c899a2160
+POINT_0x5b0c899a2240 -> POINT_0x5b0c899a2e50
+POINT_0x5b0c899a2240 -> POINT_0x5b0c899a2d70
+POINT_0x5b0c899a2320 -> POINT_0x5b0c899a2400
+POINT_0x5b0c899a2320 -> POINT_0x5b0c899a24e0
 }

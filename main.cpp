@@ -2,6 +2,7 @@
 #include <malloc.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 
 #include "Stack/stack_commands.h"
@@ -12,7 +13,9 @@
 typedef char Node_t; // nfr
 
 
-const char* const ELEM_TREE_COLOR = "#AFEEEE";
+const char* const ELEM_TREE_COLOR = "#D7CF8D";
+const char* const SHEET_TREE_COLOR = "#F9EA6B";
+const char* const FONT_COLOR = "#F2EECB";
 const char* const DUMP_FILE = "pictures/log.html";
 const size_t MAX_SIZE_TEXT_NODE = 200;
 const size_t MAX_DEEP_TREE = 30;
@@ -22,6 +25,8 @@ const Node_t* FIRST_NEGATIVE_ANS = "Stone";
 
 const char* const CRITERIA_RIGHT = "YES";
 const char* const CRITERIA_LEFT = "NO";
+
+const char* const DATABASE = "tree.txt";
 
 
 enum StatusEndPlay
@@ -37,7 +42,7 @@ struct Node
     Node* right;
 };
 
-struct Tree // это норм?
+struct Tree
 {
     Node* root;
 };
@@ -49,99 +54,84 @@ struct ForDump
 };
 
 
-void init_tree(Tree* tree);
-Node* create_node(const Node_t* data);
-Node* add_new_node(const Node_t* data); // perent - куда вставлять
-void print_tree(Node* node); // при вызове тут должен ледать корень
-void create_file_tree(Tree* tree);
-void print_tree_in_file(FILE* file, Node* node, size_t deep); 
-void run_play(Tree* tree);
-StatusEndPlay play_mystery(Node* perent, Node** last_node);
-void input_node_name(char* arr);
+void          init_tree         (Tree* tree);
+Node*         create_node       (const Node_t* data);
+Node*         add_new_node      (const Node_t* data); // perent - куда вставлять
+void          print_tree        (Node* node);         // при вызове тут должен ледать корень
+void          create_file_tree  (Tree* tree);
+void          print_tree_in_file(FILE* file, Node* node, size_t deep); 
+void          run_play          (Tree* tree);
+StatusEndPlay play_mystery      (Node* perent, Node** last_node);
+void          input_node_name   (char* arr);
 
-void create_png(int num);
-void dump(Node* node, ForDump* st_dump); // рисует поддерево
-void graph_create_edge(Node* node, FILE* file); // при вызове тут должен лежать корень
-void graph_create_point(Node* node, FILE* file); // при вызове тут должен лежать корень
-void to_do_log_file(ForDump* st_dump);
+void create_png        (int num);
+void dump              (Node* node, ForDump* st_dump); // рисует поддерево
+void graph_create_edge (Node* node, FILE* file);       // при вызове тут должен лежать корень
+void graph_create_point(Node* node, FILE* file);       // при вызове тут должен лежать корень
+void to_do_log_file    (ForDump* st_dump);
 
 
-void definition(Tree* tree, Node_t* object);
+void definition           (Tree* tree, Node_t* object);
 bool bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack, bool* found_object);
+
+
+
+size_t size_file(FILE* file);
+void get_text(FILE* file, Tree* tree);
+void take_symbol(Node* current_node, int* i, char* arr_file_tree);
+
 
 
 
 int main()
 {
 
-    // FILE* file = fopen("tree.txt", "w");
+    FILE* file = fopen(DATABASE, "r");
 
     Tree tree = {};
-    init_tree(&tree);
+    // init_tree(&tree);
 
     ForDump st_dump = {};
+
+    get_text(file, &tree);
 
     // print_file_tree(file, tree.root, 0);
     // char* c = "Stone";
     // definition(&tree, c);
 
-    create_file_tree(&tree);
+    // create_file_tree(&tree);
 
-    dump(tree.root, &st_dump);
-    print_tree(tree.root);
-    printf("\n");
-    run_play(&tree);
-    printf("\n\n\n\n\n\n\n");
-    // print_file_tree(file, tree.root, 0);
-    create_file_tree(&tree);
-    print_tree(tree.root);
-    printf("\n");
-    dump(tree.root, &st_dump);
-
-    run_play(&tree);
-    dump(tree.root, &st_dump);
-    create_file_tree(&tree);
-
-    run_play(&tree);
-    dump(tree.root, &st_dump);
-    create_file_tree(&tree);
-
-    char* c = "Stone";
-    definition(&tree, c);
-
-    c = "Red";
-    definition(&tree, c);
-
-    c = "Blue";
-    definition(&tree, c);
-    
-    c = "Person";
-    definition(&tree, c);
-    
-    c = "Dog";
-    definition(&tree, c);
-
-    // add_new_node(50, tree.root);
     // dump(tree.root, &st_dump);
-
-    // add_new_node(30, tree.root);
-    // dump(tree.root, &st_dump);
-
-    // add_new_node(70, tree.root);
-    // dump(tree.root, &st_dump);
-
-    // add_new_node(65, tree.root);
-    // dump(tree.root, &st_dump);
-
-    // add_new_node(10, tree.root);
-    // dump(tree.root, &st_dump);
-
-    // add_new_node(80, tree.root);
-    // dump(tree.root, &st_dump);
-
-    // to_do_log_file(&st_dump);
     // print_tree(tree.root);
+    // printf("\n");
+    run_play(&tree);
+    dump(tree.root, &st_dump);
+    create_file_tree(&tree);
+    // printf("\n\n\n\n\n\n\n");
+    // // print_file_tree(file, tree.root, 0);
+    // create_file_tree(&tree);
+    // print_tree(tree.root);
+    // printf("\n");
+    run_play(&tree);
+    dump(tree.root, &st_dump);
+    create_file_tree(&tree);
+
+    // run_play(&tree);
+    // dump(tree.root, &st_dump);
+    // create_file_tree(&tree);
+
+    // run_play(&tree);
+    // dump(tree.root, &st_dump);
+    // create_file_tree(&tree);
+
+
+    char* c = "Howler";
+    definition(&tree, c);
+
+    c = "Albus Percival Wulfric Brian Dumbledore";
+    definition(&tree, c);
     printf("\n");
+    to_do_log_file(&st_dump);
 }
 
 
@@ -203,8 +193,6 @@ Node* add_new_node(const Node_t* data) // perent - указатель куда �
 
 
 
-// АОАОАОА  один Segmentation fault (core dumped) за другим. За чтооооооооооооывтлытвлтылвтлытоттзукпукшпзукгпрваолпмвалдытиждлытерпдижлышщерджплыешщпждылпрщелдпршщыедлыепрщшептылетпжыетпыетпк
-
 void run_play(Tree* tree)
 {
     Node* stop_play = NULL;
@@ -223,19 +211,17 @@ void run_play(Tree* tree)
 
         case LOSE:
         {
-            printf("I am loser :(\n What were you thinking about?\n"); // О ЧЕМ ТЫ ДУМАЛ????
+            printf("I am loser :(\nWhat were you thinking about?\n"); // О ЧЕМ ТЫ ДУМАЛ????
             char* new_data = NULL;
             char input_data[MAX_SIZE_TEXT_NODE] = {};
-            // scanf("%s", vvod);
             input_node_name(input_data);
             new_data = input_data;
             
 
             printf("What is the difference?\n"); // Это должно даваться в форме: Акинатор угадал камень, а ты загадывал собаку. Чем отличается? ЭТО ЖИВОТНОЕ
-                                                // То есть на написанный вопрос ответ должен быть ДА и мы получим новую ячейку (новая ячейка уходит вправо)
+                                                 // То есть на написанный вопрос ответ должен быть ДА и мы получим новую ячейку (новая ячейка уходит вправо)
             char* new_question = NULL;
             char input_question[MAX_SIZE_TEXT_NODE] = {};
-            // scanf("%s", vvod2);
             input_node_name(input_question);
             new_question = input_question;
             // printf("%p, %s\n", new_question, new_question);
@@ -244,21 +230,17 @@ void run_play(Tree* tree)
 
             // add_new_node(&stop_play->right, new_data); // Это указатель на ответ который тут лежал. ЭТО ЛИСТИК
             // add_new_node(&stop_play->left, stop_play->data); // переместили листик
-            // add_new_node(new_data);
-
             
             stop_play->right = add_new_node(new_data);
             // printf("ot do stop_play->right, neww - %p\n", stop_play->right);
             stop_play->left  = add_new_node(stop_play->data);
 
-            strcpy(stop_play->data, new_question); // Добавить  вопросительный знак в конец
+            strcpy(stop_play->data, new_question); // Добавить  вопросительный знак в конец!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             // printf("NEW NAME: %s", stop_play->data);
             // printf("NEW NAME: %s", stop_play->right->data);
             // printf("NEW NAME: %s", stop_play->left->data);
             break;
-
         }
-
     
         default:
         {
@@ -273,12 +255,10 @@ void run_play(Tree* tree)
 void input_node_name(char* arr)
 {
     char c = 0;
-    // printf("%s - str\n", arr);
     for (size_t i = 0; (((c = getchar()) != '\n') || (arr[0] == '\0')) && (i < MAX_SIZE_TEXT_NODE); i++) // как только ложь - завершиться
     {
         if (c == '\n'){i--; continue;}  
         arr[i] = c;
-        // printf("%s - str\n", arr);
     }
 }
 
@@ -315,21 +295,6 @@ StatusEndPlay play_mystery(Node* perent, Node** last_node)
             answer = vvod;
         }
     }
-    
-
-    // if (strcmp(answer, "YES") == 0) 
-    // {
-    //     // printf("he ans YES\n");
-    //     if (perent->right == NULL) return WIN;
-    //     return play_mystery(perent->right, last_node);
-    // }
-
-    // // printf("he ans NO\n");
-
-    // if (perent->left == NULL) return LOSE;
-    // return play_mystery(perent->left, last_node);
-    
-
 }
 
 
@@ -341,6 +306,140 @@ StatusEndPlay play_mystery(Node* perent, Node** last_node)
 
 
 
+
+
+
+// ________________________________________________________________________________________________________________________________________________________
+// По чтению из файла - должна восстанавливать дерево. 
+// Как только встретилось } мы из этой ветки выходим. Иначе продолжаем вложенность. 
+// Можно читать без \t и без \n. Тогда будет большая строка чисто из названий (то есть "скобочная последовательность"). 
+
+
+size_t size_file(FILE* file)
+{
+    size_t size = 0;
+
+    fseek(file, 0, SEEK_END);
+    size = (size_t) ftell(file);
+    fseek(file, 0, SEEK_SET);
+
+    return size;
+}
+
+
+
+void get_text(FILE* file, Tree* tree)
+{
+    size_t len_text = size_file(file);
+
+    // char arr_file_tree[(int) pow(2, MAX_DEEP_TREE) * MAX_SIZE_TEXT_NODE] = {}; // треш
+    char arr_file_tree[len_text] = {};
+
+    size_t count_symbol = fread(arr_file_tree, sizeof(char), len_text, file); // Прочитали. Тут есть и \t и \n и вообще каждый символ
+
+    int i = 0;
+
+    i += 1;
+    // читаем имя (для root)
+    int ind_name = 0;
+    char name_root[MAX_SIZE_TEXT_NODE] = {};
+    while (arr_file_tree[i] != '\n')
+    {
+        name_root[ind_name] = arr_file_tree[i];
+        i += 1;
+        ind_name++;
+    }
+
+    // создаем ячеку с этим именем
+    tree->root = create_node(name_root);
+    printf("%s - name root\n", tree->root->data);
+
+    for (int j = 0; j < 200; j++) printf("%c", arr_file_tree[j]);
+
+    take_symbol(tree->root, &i, arr_file_tree);
+}
+
+
+void take_symbol(Node* current_node, int* i, char* arr_file_tree)
+{
+    // char c = arr_file_tree[*i];
+    while ((arr_file_tree[*i] == '\t') || (arr_file_tree[*i] == '\n') || (arr_file_tree[*i] == ' ')) *i += 1;
+
+    if (arr_file_tree[*i] == '}'){*i +=1; return;} 
+
+    if (arr_file_tree[*i] == '{') // для левого поддерева
+    {
+        printf("AAAAAAAAAAAAAAAAAAAAA\n");
+        *i += 1;
+        // читаем имя
+        int ind_name = 0;
+        char name_left_node[MAX_SIZE_TEXT_NODE] = {};
+        while (arr_file_tree[*i] != '\n')
+        {
+            name_left_node[ind_name] = arr_file_tree[*i];
+            *i += 1;
+            ind_name++;
+        }
+
+
+        // создаем ячеку с этим именем
+        Node* new_left_node = create_node(name_left_node);
+        printf("%s - name current_node\n", current_node->data);
+        printf("%s - name left node\n", name_left_node);
+        current_node->left = new_left_node;
+        take_symbol(current_node->left, i, arr_file_tree);
+        printf("I stop\n");
+    }
+
+    printf("CCCCCCCCCCCCCCCC\n");
+    printf("%s - name current_node\n", current_node->data);
+    printf("CCCCCCCCCCCCCCCC\n");
+    printf("%d - i\n", *i);
+
+    for(int j = *i; j < 200; j++)
+    {
+        printf("%c", arr_file_tree[j]);
+    }
+    // if (arr_file_tree[*i] == '}') return;
+    while ((arr_file_tree[*i] == '\t') || (arr_file_tree[*i] == '\n') || (arr_file_tree[*i] == ' ')) *i += 1;
+    printf("after clean\n");
+    for(int j = *i; j < 200; j++)
+    {
+        printf("%c", arr_file_tree[j]);
+    }
+    // if (arr_file_tree[*i] == '}') return;
+    if (arr_file_tree[*i] == '{') // для правого поддерева
+    {
+        printf("BBBBBBBBBBBB\n");
+        *i += 1;
+        // читаем имя
+        int ind_name = 0;
+        char name_right_node[MAX_SIZE_TEXT_NODE] = {};
+        while (arr_file_tree[*i] != '\n')
+        {
+            name_right_node[ind_name] = arr_file_tree[*i];
+            *i += 1;
+            ind_name++;
+        }
+
+        // создаем ячеку с этим именем
+        Node* new_right_node = create_node(name_right_node);
+        printf("%s - name current_node\n", current_node->data);
+        printf("%s - name right node\n", name_right_node);
+        current_node->right = new_right_node;
+        take_symbol(current_node->right, i, arr_file_tree);
+    }
+
+    printf("%s - name current_node AAAAAAAAAAAAAAAAA\n", current_node->data);
+    while ((arr_file_tree[*i] == '\t') || (arr_file_tree[*i] == '\n') || (arr_file_tree[*i] == ' ')) *i += 1;
+    if (arr_file_tree[*i] == '}'){*i +=1; return;} 
+
+}
+
+
+
+
+//______________________________________________________________________________________________________________________________________________________________
 
 
 
@@ -409,15 +508,12 @@ StatusEndPlay play_mystery(Node* perent, Node** last_node)
 
 void definition(Tree* tree, Node_t* object) // можно массив: [] (из да и нет) (А потом сверху восстановим)
 {
-    // int way_to_object[MAX_DEEP_TREE] = {};
     Stack stack = {};
     default_stack_ctor(&stack, 32);
-    // for (size_t i = 0; i < MAX_DEEP_TREE; i++) way_to_object[i] = -1;
 
     bool found_object = false;
 
     found_object = bilding_way_to_object(tree->root, object, &stack, &found_object);
-    // printf("I do it\n");
 
     if (!found_object) printf("No this object in Tree\n");
     else  // значит путь нашел
@@ -449,7 +545,7 @@ void definition(Tree* tree, Node_t* object) // можно массив: [] (из
                 printf("%s ", current_node->data);
                 current_node = current_node->right;
             }
-            else
+            else // влево
             {
                 printf("NO %s ", current_node->data);
                 current_node = current_node->left;
@@ -479,20 +575,16 @@ bool bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack, boo
 
     if (current_node->right)
     {
-        // printf("want Go_to_right\n");
         stack_push(stack, 1); // push 1 (вправо) 
         if (bilding_way_to_object(current_node->right, object, stack, found_object)) return true;
         else 
         {
-            // printf("else right\n");
             StackElem_t pop_elem = 0;
-            // print_stack_info(stack, OK);
             stack_pop(stack, &pop_elem); // pop
         }
     }
     if (current_node->left)
     {
-        // printf("want Go_to_left\n");
         stack_push(stack, 0); // push 0 (влево)
         if (bilding_way_to_object(current_node->left, object, stack, found_object)) return true;
         else 
@@ -501,8 +593,6 @@ bool bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack, boo
             stack_pop(stack, &pop_elem); // pop
         }
     }
-
-    // printf("NO here\n");
   return false;
     
 }
@@ -594,7 +684,7 @@ void print_tree(Node* node) // при вызове тут должен лежа�
 
 void create_file_tree(Tree* tree)
 {
-    FILE* file = fopen("tree.txt", "w");
+    FILE* file = fopen(DATABASE, "w");
 
     print_tree_in_file(file, tree->root, 0);
 
@@ -603,8 +693,6 @@ void create_file_tree(Tree* tree)
 
 void print_tree_in_file(FILE* file, Node* node, size_t deep) // при вызове тут должен лежать корень (можно поставить счетчик глубины (по нему колво tab делать. А в рекурсии запускать просто счетчик + 1)
 {   
-    // FILE* file = fopen("tree.txt", "w");
-
     char tabs[MAX_DEEP_TREE] = {}; // или можно назвать что-то типа current_deep
     for (size_t i = 0; i < deep; i++) tabs[i] = '\t';
     
@@ -663,15 +751,23 @@ void print_tree_in_file(FILE* file, Node* node, size_t deep) // при вызо�
 
 void graph_create_point(Node* node, FILE* file) // при вызове тут должен лежать корень
 {   
+    // if (node == NULL) return;
+
+    // fprintf(file, "POINT_%p[shape=Mrecord, label = \"%s\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->data, ELEM_TREE_COLOR);
+
+    // graph_create_point(node->left, file);
+    // graph_create_point(node->right, file);
+
+    // это выглядит не очень (выше мне нравится больше), но зато тут звет и "?"
+
     if (node == NULL) return;
 
-
-    // printf("%d", node->data);
-    fprintf(file, "POINT_%p[shape=Mrecord, label = \"%s\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->data, ELEM_TREE_COLOR);
+    if(node->left != NULL && node->right != NULL) fprintf(file, "POINT_%p[shape=Mrecord, label = \"%s?\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->data, ELEM_TREE_COLOR);
+    else                                          fprintf(file, "POINT_%p[shape=Mrecord, label = \"%s\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->data, SHEET_TREE_COLOR);
 
     graph_create_point(node->left, file);
     graph_create_point(node->right, file);
-}
+}   
 
 void graph_create_edge(Node* node, FILE* file) // при вызове тут должен лежать корень
 {   
@@ -699,10 +795,10 @@ void dump(Node* node, ForDump* st_dump) // рисует поддерево
     char sample[] = "pictures/image00.dot";
     sample[14] = (char) ('0' + ((int) number_of_dump / 10));
     sample[15] = (char) ('0' + ((int) number_of_dump % 10));
-    // printf("%s - sample\n", sample);
+
     FILE* file = fopen(sample, "w");
 
-    fprintf(file, "digraph\n{\nrankdir = TB;\n");
+    fprintf(file, "digraph\n{\nbgcolor=\"%s\";\nrankdir = TB;\n", FONT_COLOR);
 
     graph_create_point(node, file);
 
@@ -731,6 +827,8 @@ void to_do_log_file(ForDump* st_dump)
     FILE* file = fopen(DUMP_FILE, "w");
 
     fprintf(file, "<pre>\n");
+    fprintf(file, "<style>body {background-color:%s}</style>\n\n", FONT_COLOR);
+
 
     for (int i = 1; i <= st_dump->dumps_counter; i++)
     {        
