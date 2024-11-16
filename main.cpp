@@ -53,9 +53,11 @@ void init_tree(Tree* tree);
 Node* create_node(const Node_t* data);
 Node* add_new_node(const Node_t* data); // perent - куда вставлять
 void print_tree(Node* node); // при вызове тут должен ледать корень
-void print_file_tree(FILE* file, Node* node, size_t deep); 
+void create_file_tree(Tree* tree);
+void print_tree_in_file(FILE* file, Node* node, size_t deep); 
 void run_play(Tree* tree);
 StatusEndPlay play_mystery(Node* perent, Node** last_node);
+void input_node_name(char* arr);
 
 void create_png(int num);
 void dump(Node* node, ForDump* st_dump); // рисует поддерево
@@ -72,32 +74,37 @@ bool bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack, boo
 int main()
 {
 
-    FILE* file = fopen("tree.txt", "w");
+    // FILE* file = fopen("tree.txt", "w");
 
     Tree tree = {};
     init_tree(&tree);
 
     ForDump st_dump = {};
 
-    print_file_tree(file, tree.root, 0);
+    // print_file_tree(file, tree.root, 0);
     // char* c = "Stone";
     // definition(&tree, c);
+
+    create_file_tree(&tree);
 
     dump(tree.root, &st_dump);
     print_tree(tree.root);
     printf("\n");
     run_play(&tree);
     printf("\n\n\n\n\n\n\n");
-    print_file_tree(file, tree.root, 0);
+    // print_file_tree(file, tree.root, 0);
+    create_file_tree(&tree);
     print_tree(tree.root);
     printf("\n");
     dump(tree.root, &st_dump);
 
     run_play(&tree);
     dump(tree.root, &st_dump);
+    create_file_tree(&tree);
 
     run_play(&tree);
     dump(tree.root, &st_dump);
+    create_file_tree(&tree);
 
     char* c = "Stone";
     definition(&tree, c);
@@ -218,17 +225,19 @@ void run_play(Tree* tree)
         {
             printf("I am loser :(\n What were you thinking about?\n"); // О ЧЕМ ТЫ ДУМАЛ????
             char* new_data = NULL;
-            char vvod [200] = {};
-            scanf("%s", vvod);
-            new_data = vvod;
+            char input_data[MAX_SIZE_TEXT_NODE] = {};
+            // scanf("%s", vvod);
+            input_node_name(input_data);
+            new_data = input_data;
             
 
             printf("What is the difference?\n"); // Это должно даваться в форме: Акинатор угадал камень, а ты загадывал собаку. Чем отличается? ЭТО ЖИВОТНОЕ
                                                 // То есть на написанный вопрос ответ должен быть ДА и мы получим новую ячейку (новая ячейка уходит вправо)
             char* new_question = NULL;
-            char vvod2 [200] = {};
-            scanf("%s", vvod2);
-            new_question = vvod2;
+            char input_question[MAX_SIZE_TEXT_NODE] = {};
+            // scanf("%s", vvod2);
+            input_node_name(input_question);
+            new_question = input_question;
             // printf("%p, %s\n", new_question, new_question);
 
             
@@ -259,6 +268,19 @@ void run_play(Tree* tree)
     }
 }
 
+
+
+void input_node_name(char* arr)
+{
+    char c = 0;
+    // printf("%s - str\n", arr);
+    for (size_t i = 0; (((c = getchar()) != '\n') || (arr[0] == '\0')) && (i < MAX_SIZE_TEXT_NODE); i++) // как только ложь - завершиться
+    {
+        if (c == '\n'){i--; continue;}  
+        arr[i] = c;
+        // printf("%s - str\n", arr);
+    }
+}
 
 
 
@@ -570,7 +592,16 @@ void print_tree(Node* node) // при вызове тут должен лежа�
 }
 
 
-void print_file_tree(FILE* file, Node* node, size_t deep) // при вызове тут должен лежать корень (можно поставить счетчик глубины (по нему колво tab делать. А в рекурсии запускать просто счетчик + 1)
+void create_file_tree(Tree* tree)
+{
+    FILE* file = fopen("tree.txt", "w");
+
+    print_tree_in_file(file, tree->root, 0);
+
+    fclose(file);
+}
+
+void print_tree_in_file(FILE* file, Node* node, size_t deep) // при вызове тут должен лежать корень (можно поставить счетчик глубины (по нему колво tab делать. А в рекурсии запускать просто счетчик + 1)
 {   
     // FILE* file = fopen("tree.txt", "w");
 
@@ -579,11 +610,11 @@ void print_file_tree(FILE* file, Node* node, size_t deep) // при вызове
     
     if (node == NULL) return;
 
-    fprintf(file, "%s{\n", tabs);
-    fprintf(file, "\t%s%s\n", tabs, node->data);
+    fprintf(file, "%s{%s\n", tabs, node->data);
+    // fprintf(file, "\t%s%s\n", tabs, node->data);
 
-    print_file_tree(file, node->left, deep + 1);
-    print_file_tree(file, node->right, deep + 1);
+    print_tree_in_file(file, node->left, deep + 1);
+    print_tree_in_file(file, node->right, deep + 1);
     fprintf(file, "%s}\n", tabs);
     // printf("\n");
 }

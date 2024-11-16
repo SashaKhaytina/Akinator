@@ -1,24 +1,18 @@
-{
-	It's alive?
-	{
-		Stone
-	}
-	{
-		Person
-	}
-}
-{
-	It's alive?
-	{
-		Stone
-	}
-	{
-		Animal
-		{
-			Person
+{It's alive?
+	{It is color
+		{Stone
 		}
-		{
-			Dog
+		{Cold color
+			{Color red
+			}
+			{Color blue
+			}
+		}
+	}
+	{Animal
+		{Person
+		}
+		{Monkey
 		}
 	}
 }

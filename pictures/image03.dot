@@ -1,17 +1,17 @@
 digraph
 {
 rankdir = TB;
-POINT_0x63f77b2fa480[shape=Mrecord, label = "It's alive?", style="filled",fillcolor="#AFEEEE"]
-POINT_0x63f77b2fa640[shape=Mrecord, label = "Color", style="filled",fillcolor="#AFEEEE"]
-POINT_0x63f77b2fc3d0[shape=Mrecord, label = "Stone", style="filled",fillcolor="#AFEEEE"]
-POINT_0x63f77b2fc2f0[shape=Mrecord, label = "Red", style="filled",fillcolor="#AFEEEE"]
-POINT_0x63f77b2fa560[shape=Mrecord, label = "Animal", style="filled",fillcolor="#AFEEEE"]
-POINT_0x63f77b2fc210[shape=Mrecord, label = "Person", style="filled",fillcolor="#AFEEEE"]
-POINT_0x63f77b2fc130[shape=Mrecord, label = "Dog", style="filled",fillcolor="#AFEEEE"]
-POINT_0x63f77b2fa480 -> POINT_0x63f77b2fa640
-POINT_0x63f77b2fa480 -> POINT_0x63f77b2fa560
-POINT_0x63f77b2fa640 -> POINT_0x63f77b2fc3d0
-POINT_0x63f77b2fa640 -> POINT_0x63f77b2fc2f0
-POINT_0x63f77b2fa560 -> POINT_0x63f77b2fc210
-POINT_0x63f77b2fa560 -> POINT_0x63f77b2fc130
+POINT_0x61fda3fa72a0[shape=Mrecord, label = "It's alive?", style="filled",fillcolor="#AFEEEE"]
+POINT_0x61fda3fa7460[shape=Mrecord, label = "It is color", style="filled",fillcolor="#AFEEEE"]
+POINT_0x61fda3fa81e0[shape=Mrecord, label = "Stone", style="filled",fillcolor="#AFEEEE"]
+POINT_0x61fda3fa8100[shape=Mrecord, label = "Color red", style="filled",fillcolor="#AFEEEE"]
+POINT_0x61fda3fa7380[shape=Mrecord, label = "Animal", style="filled",fillcolor="#AFEEEE"]
+POINT_0x61fda3fa8020[shape=Mrecord, label = "Person", style="filled",fillcolor="#AFEEEE"]
+POINT_0x61fda3fa7f40[shape=Mrecord, label = "Monkey", style="filled",fillcolor="#AFEEEE"]
+POINT_0x61fda3fa72a0 -> POINT_0x61fda3fa7460
+POINT_0x61fda3fa72a0 -> POINT_0x61fda3fa7380
+POINT_0x61fda3fa7460 -> POINT_0x61fda3fa81e0
+POINT_0x61fda3fa7460 -> POINT_0x61fda3fa8100
+POINT_0x61fda3fa7380 -> POINT_0x61fda3fa8020
+POINT_0x61fda3fa7380 -> POINT_0x61fda3fa7f40
 }
