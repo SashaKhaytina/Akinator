@@ -95,34 +95,14 @@ int main()
 
     get_text(file, &tree);
 
-    // print_file_tree(file, tree.root, 0);
-    // char* c = "Stone";
-    // definition(&tree, c);
-
-    // create_file_tree(&tree);
-
-    // dump(tree.root, &st_dump);
-    // print_tree(tree.root);
-    // printf("\n");
-    run_play(&tree);
-    dump(tree.root, &st_dump);
-    create_file_tree(&tree);
-    // printf("\n\n\n\n\n\n\n");
-    // // print_file_tree(file, tree.root, 0);
-    // create_file_tree(&tree);
-    // print_tree(tree.root);
-    // printf("\n");
     run_play(&tree);
     dump(tree.root, &st_dump);
     create_file_tree(&tree);
 
-    // run_play(&tree);
-    // dump(tree.root, &st_dump);
-    // create_file_tree(&tree);
 
-    // run_play(&tree);
-    // dump(tree.root, &st_dump);
-    // create_file_tree(&tree);
+    run_play(&tree);
+    dump(tree.root, &st_dump);
+    create_file_tree(&tree);
 
 
     char* c = "Howler";
@@ -130,7 +110,7 @@ int main()
 
     c = "Albus Percival Wulfric Brian Dumbledore";
     definition(&tree, c);
-    printf("\n");
+
     to_do_log_file(&st_dump);
 }
 
@@ -139,8 +119,6 @@ void init_tree(Tree* tree)
 {
 
     tree->root = create_node(FIRST_QUESTION); // Это первая ячейка (вопрос)
-    // add_new_node(&tree->root->right, FIRST_POSITIVE_ANS);
-    // add_new_node(&tree->root->left,  FIRST_NEGATIVE_ANS);
 
     tree->root->right = add_new_node(FIRST_POSITIVE_ANS);
     tree->root->left  = add_new_node(FIRST_NEGATIVE_ANS);
@@ -150,43 +128,21 @@ void init_tree(Tree* tree)
 
 Node* create_node(const Node_t* data)
 {
-    // printf("Зашел в create_node\n");
     Node* new_node = (Node*) calloc(1, sizeof(Node));
 
     strcpy(new_node->data, data);
     new_node->left = NULL;
     new_node->right = NULL;
 
-    // printf("GO out в create_node, %p\n", new_node);
-
     return new_node;
 }
 
 Node* add_new_node(const Node_t* data) // perent - указатель куда вставлять (он может быть *Node.left ) (Причем сам Node.left = NULL)
 {
-    // printf("%p", *perent);
-    // char* data = {};
-    // printf("What were you thinking about?\n");
-    // scanf("%s", data);
 
     Node* new_node = create_node(data); // создали
-    // printf("%p - new_node\n", new_node);                // положили
 
     return new_node;
-    // printf("%p", *perent);
-
-
-    // if (perent->data < data)
-    // {
-    //     if (perent->right != NULL) add_new_node(data, perent->right);
-    //     else perent->right = create_node(data);
-    // }
-
-    // else
-    // {
-    //     if (perent->right != NULL) add_new_node(data, perent->left);
-    //     else perent->left = create_node(data);
-    // }
 
 }
 
@@ -196,10 +152,8 @@ Node* add_new_node(const Node_t* data) // perent - указатель куда �
 void run_play(Tree* tree)
 {
     Node* stop_play = NULL;
-    // printf("Start play\n");
     StatusEndPlay result = play_mystery(tree->root, &stop_play);
-    // printf("stop-play - %p", stop_play);
-    // printf("Stop play\n");
+
 
     switch (result)
     {
@@ -224,21 +178,13 @@ void run_play(Tree* tree)
             char input_question[MAX_SIZE_TEXT_NODE] = {};
             input_node_name(input_question);
             new_question = input_question;
-            // printf("%p, %s\n", new_question, new_question);
 
             
-
-            // add_new_node(&stop_play->right, new_data); // Это указатель на ответ который тут лежал. ЭТО ЛИСТИК
-            // add_new_node(&stop_play->left, stop_play->data); // переместили листик
             
             stop_play->right = add_new_node(new_data);
-            // printf("ot do stop_play->right, neww - %p\n", stop_play->right);
             stop_play->left  = add_new_node(stop_play->data);
 
-            strcpy(stop_play->data, new_question); // Добавить  вопросительный знак в конец!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // printf("NEW NAME: %s", stop_play->data);
-            // printf("NEW NAME: %s", stop_play->right->data);
-            // printf("NEW NAME: %s", stop_play->left->data);
+            strcpy(stop_play->data, new_question); 
             break;
         }
     
@@ -266,7 +212,6 @@ void input_node_name(char* arr)
 
 StatusEndPlay play_mystery(Node* perent, Node** last_node)
 {
-    // printf("Start func play\n");
     *last_node = perent;
     printf("%s?\n", perent->data);
     
@@ -367,9 +312,9 @@ void take_symbol(Node* current_node, int* i, char* arr_file_tree)
 
     if (arr_file_tree[*i] == '}'){*i +=1; return;} 
 
+    // Эту часть можно в отдельную функцию (она 2 раза)
     if (arr_file_tree[*i] == '{') // для левого поддерева
     {
-        printf("AAAAAAAAAAAAAAAAAAAAA\n");
         *i += 1;
         // читаем имя
         int ind_name = 0;
@@ -384,33 +329,25 @@ void take_symbol(Node* current_node, int* i, char* arr_file_tree)
 
         // создаем ячеку с этим именем
         Node* new_left_node = create_node(name_left_node);
-        printf("%s - name current_node\n", current_node->data);
-        printf("%s - name left node\n", name_left_node);
         current_node->left = new_left_node;
         take_symbol(current_node->left, i, arr_file_tree);
-        printf("I stop\n");
     }
 
-    printf("CCCCCCCCCCCCCCCC\n");
-    printf("%s - name current_node\n", current_node->data);
-    printf("CCCCCCCCCCCCCCCC\n");
-    printf("%d - i\n", *i);
 
     for(int j = *i; j < 200; j++)
     {
         printf("%c", arr_file_tree[j]);
     }
-    // if (arr_file_tree[*i] == '}') return;
+
     while ((arr_file_tree[*i] == '\t') || (arr_file_tree[*i] == '\n') || (arr_file_tree[*i] == ' ')) *i += 1;
-    printf("after clean\n");
+
     for(int j = *i; j < 200; j++)
     {
         printf("%c", arr_file_tree[j]);
     }
-    // if (arr_file_tree[*i] == '}') return;
+
     if (arr_file_tree[*i] == '{') // для правого поддерева
     {
-        printf("BBBBBBBBBBBB\n");
         *i += 1;
         // читаем имя
         int ind_name = 0;
@@ -424,13 +361,11 @@ void take_symbol(Node* current_node, int* i, char* arr_file_tree)
 
         // создаем ячеку с этим именем
         Node* new_right_node = create_node(name_right_node);
-        printf("%s - name current_node\n", current_node->data);
-        printf("%s - name right node\n", name_right_node);
+
         current_node->right = new_right_node;
         take_symbol(current_node->right, i, arr_file_tree);
     }
 
-    printf("%s - name current_node AAAAAAAAAAAAAAAAA\n", current_node->data);
     while ((arr_file_tree[*i] == '\t') || (arr_file_tree[*i] == '\n') || (arr_file_tree[*i] == ' ')) *i += 1;
     if (arr_file_tree[*i] == '}'){*i +=1; return;} 
 
@@ -519,7 +454,6 @@ void definition(Tree* tree, Node_t* object) // можно массив: [] (из
     else  // значит путь нашел
     {
         // тут надо вытаскивать путь из стека и по нему строить определение
-        // запомним size стека
         size_t len_way = stack.size;
 
         int way_to_object[MAX_DEEP_TREE] = {}; 
@@ -560,11 +494,7 @@ void definition(Tree* tree, Node_t* object) // можно массив: [] (из
 
 bool bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack, bool* found_object)
 {
-    // if (strcmp(current_node->data, object) == 0)
-    // Поставим переменную-датчик (дошли мы до этой ячейки или нет)
-    // printf("IN bilding_way_to_object\n");
-    // print_stack_info(stack, OK);
-    // printf("%s - data now\n", current_node->data);
+    // проверить на нужность found_object
     if (*found_object == true) return true;
 
     if (strcmp(current_node->data, object) == 0)
