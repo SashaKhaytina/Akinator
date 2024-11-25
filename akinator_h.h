@@ -12,7 +12,7 @@ const char* const DATABASE      = "tree.txt";
 
 struct Node
 {
-    Node_t data[MAX_SIZE_TEXT_NODE]; // Имя в ячейке
+    Node_t data[MAX_SIZE_TEXT_NODE]; 
     Node* left;
     Node* right;
 };

@@ -22,7 +22,7 @@ static size_t size_file(FILE* file)
 }
 
 
-static void fill_tree(Node* current_node, int* point_current_letter, char* arr_file_tree) // TOD: rename i, сократи функцию
+static void fill_tree(Node* current_node, int* point_current_letter, char* arr_file_tree)
 {
     pass_spaces(point_current_letter, arr_file_tree);
 
@@ -86,20 +86,18 @@ static void read_new_node(Node* current_node, int* point_current_letter, char* a
 }
 
 
-static void print_tree_in_file(FILE* file, Node* node, size_t deep) // при вызове тут должен лежать корень (можно поставить счетчик глубины (по нему колво tab делать. А в рекурсии запускать просто счетчик + 1)
+static void print_tree_in_file(FILE* file, Node* node, size_t deep)
 {   
-    char tabs[MAX_DEEP_TREE] = {}; // или можно назвать что-то типа current_deep
+    char tabs[MAX_DEEP_TREE] = {};
     for (size_t i = 0; i < deep; i++) tabs[i] = '\t';
     
     if (node == NULL) return;
 
     fprintf(file, "%s{%s\n", tabs, node->data);
-    // fprintf(file, "\t%s%s\n", tabs, node->data);
 
     print_tree_in_file(file, node->left, deep + 1);
     print_tree_in_file(file, node->right, deep + 1);
     fprintf(file, "%s}\n", tabs);
-    // printf("\n");
 }
 
 
@@ -109,14 +107,12 @@ void get_tree(FILE* file, Tree* tree)
 {
     size_t len_text = size_file(file);
 
-    // char arr_file_tree[(int) pow(2, MAX_DEEP_TREE) * MAX_SIZE_TEXT_NODE] = {}; // треш
     char arr_file_tree[len_text] = {};
 
-    size_t count_symbol = fread(arr_file_tree, sizeof(char), len_text, file); // Прочитали. Тут есть и \t и \n и вообще каждый символ
+    size_t count_symbol = fread(arr_file_tree, sizeof(char), len_text, file);
 
     int point_current_letter = 1;
-    // читаем имя (для root)
-    // int ind_name = arr_file_tree[point_current_letter];
+
     int ind_name = 0;
     char name_root[MAX_SIZE_TEXT_NODE] = {};
 
@@ -130,9 +126,6 @@ void get_tree(FILE* file, Tree* tree)
 
     // создаем ячеку с этим именем
     tree->root = create_node(name_root);
-    // printf("%s - name root\n", tree->root->data);
-
-    // for (int j = 0; j < 200; j++) printf("%c", arr_file_tree[j]);
 
     fill_tree(tree->root, &point_current_letter, arr_file_tree);
 }

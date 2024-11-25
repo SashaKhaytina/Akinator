@@ -125,8 +125,8 @@ static void run_play(Tree* tree)
             new_data = input_data;
             
 
-            PRINTF_BLUE("What is the difference?\n"); // Это должно даваться в форме: Акинатор угадал камень, а ты загадывал собаку. Чем отличается? ЭТО ЖИВОТНОЕ
-                                                 // То есть на написанный вопрос ответ должен быть ДА и мы получим новую ячейку (новая ячейка уходит вправо)
+            PRINTF_BLUE("What is the difference?\n");
+
             char* new_question = NULL;
             char input_question[MAX_SIZE_TEXT_NODE] = {};
             input_node_name(input_question);
@@ -154,7 +154,7 @@ static void run_play(Tree* tree)
 static void input_node_name(char* arr)
 {
     char c = 0;
-    for (size_t i = 0; (((c = getchar()) != '\n') || (arr[0] == '\0')) && (i < MAX_SIZE_TEXT_NODE); i++) // как только ложь - завершиться
+    for (size_t i = 0; (((c = getchar()) != '\n') || (arr[0] == '\0')) && (i < MAX_SIZE_TEXT_NODE); i++) 
     {
         if (c == '\n'){i--; continue;}  
         arr[i] = c;
@@ -198,7 +198,7 @@ static StatusEndPlay play_mystery(Node* perent, Node** last_node)
 
 // Чтобы сравнить - все поделить по функциям, и вывод просто делать отдельно. А там массивы сравнить.
 
-static void definition(Tree* tree, Node_t* object) // можно массив: [] (из да и нет) (А потом сверху восстановим)
+static void definition(Tree* tree, Node_t* object) // массив: [] (из да и нет) (А потом сверху восстановим)
 {
     Stack stack = {};
     default_stack_ctor(&stack, 32);
@@ -210,11 +210,10 @@ static void definition(Tree* tree, Node_t* object) // можно массив: [
     if (!found_object) PRINTF_BLUE("No this object in Tree\n");
     else  // значит путь нашел
     {
-        // тут надо вытаскивать путь из стека и по нему строить определение
         size_t len_way = stack.size;
 
         int way_to_object[MAX_DEEP_TREE] = {}; 
-        // 1) разворачиваем  -> получаем way_to_object
+
         for (size_t i = 0; i < len_way; i++)
         {
             size_t current_size = stack.size;
@@ -224,9 +223,6 @@ static void definition(Tree* tree, Node_t* object) // можно массив: [
         }
 
 
-
-
-        // Читаю из массива путь
         PRINTF_GREEN("Definition %s: ", object);
         Node* current_node = tree->root;
         for (size_t i = 0; i < len_way; i++)

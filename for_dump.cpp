@@ -2,11 +2,11 @@
 
 
 static void create_png        (int num);
-static void graph_create_edge (Node* node, FILE* file);       // при вызове тут должен лежать корень
-static void graph_create_point(Node* node, FILE* file);       // при вызове тут должен лежать корень
+static void graph_create_edge (Node* node, FILE* file);       
+static void graph_create_point(Node* node, FILE* file);     
 
 
-static void graph_create_point(Node* node, FILE* file) // при вызове тут должен лежать корень
+static void graph_create_point(Node* node, FILE* file)
 {   
     if (node == NULL) return;
 
@@ -18,7 +18,7 @@ static void graph_create_point(Node* node, FILE* file) // при вызове т
 }   
 
 
-static void graph_create_edge(Node* node, FILE* file) // при вызове тут должен лежать корень
+static void graph_create_edge(Node* node, FILE* file) 
 {   
     if (node == NULL) return;
 

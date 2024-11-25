@@ -23,16 +23,6 @@ enum StatusEndPlay
 };
 
 void start_game();
-// void          help_mode      ();
-// void          definition_mode(Tree* tree);
-// void          mystery_mode   (Tree* tree, ForDump* st_dump);
-
-// void          run_play             (Tree* tree);
-// StatusEndPlay play_mystery         (Node* perent, Node** last_node);
-// void          input_node_name      (char* arr);
-// void          definition           (Tree* tree, Node_t* object);
-// bool          bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack, bool* found_object);
-
 
 
 #endif

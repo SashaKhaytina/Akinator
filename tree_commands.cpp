@@ -29,7 +29,7 @@ Node* create_node(const Node_t* data)
     return new_node;
 }
 
-Node* add_new_node(const Node_t* data) // perent - указатель куда вставлять (он может быть *Node.left ) (Причем сам Node.left = NULL)
+Node* add_new_node(const Node_t* data) 
 {
 
     Node* new_node = create_node(data); 
@@ -38,7 +38,7 @@ Node* add_new_node(const Node_t* data) // perent - указатель куда �
 
 }
 
-void print_tree(Node* node) // при вызове тут должен лежать корень (с помощью этого можно делать вывод в файл)
+void print_tree(Node* node)
 {   
     if (node == NULL) return;
 
@@ -48,5 +48,4 @@ void print_tree(Node* node) // при вызове тут должен лежа�
     print_tree(node->left);
     print_tree(node->right);
     printf(")");
-    // printf("\n");
 }

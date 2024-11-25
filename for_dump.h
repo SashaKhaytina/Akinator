@@ -12,10 +12,6 @@ const char* const DUMP_FILE        = "pictures/log.html";
 
 void dump              (Node* node, ForDump* st_dump); // рисует поддерево
 void to_do_log_file    (ForDump* st_dump);
-// void create_png        (int num);
-// void graph_create_edge (Node* node, FILE* file);       // при вызове тут должен лежать корень
-// void graph_create_point(Node* node, FILE* file);       // при вызове тут должен лежать корень
-
 
 
 #endif
