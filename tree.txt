@@ -2,7 +2,19 @@
 	{It's casting
 		{It's magic think
 			{It's for seat
-				{Table
+				{It's for drinking
+					{It's for sleep
+						{It shows the time
+							{Table
+							}
+							{Clock
+							}
+						}
+						{Bed
+						}
+					}
+					{Cup
+					}
 				}
 				{Chear
 				}
@@ -15,21 +27,33 @@
 	}
 	{It's Hogwarts professor
 		{It's student
-			{It's death eaters
+			{It's death eater
 				{Garrick Ollivander
 				}
-				{Lucius Malfoy
+				{woman
+					{Lucius Malfoy
+					}
+					{Bellatrice Leistrange
+					}
 				}
 			}
 			{It's girl
-				{Harry Potter
+				{red hair color
+					{Harry Potter
+					}
+					{Ron Weasley
+					}
 				}
 				{Hermione Jean Granger
 				}
 			}
 		}
 		{It's woman
-			{Albus Percival Wulfric Brian Dumbledore
+			{Professor of potions
+				{Albus Percival Wulfric Brian Dumbledore
+				}
+				{Severus Snape
+				}
 			}
 			{Minerva McGonagall
 			}
