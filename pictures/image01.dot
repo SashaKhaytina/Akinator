@@ -2,65 +2,77 @@ digraph
 {
 bgcolor="#F2EECB";
 rankdir = TB;
-POINT_0x6101194128a0[shape=Mrecord, label = "It's alive?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119412980[shape=Mrecord, label = "It's casting?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119412a60[shape=Mrecord, label = "It's magic think?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119412b40[shape=Mrecord, label = "It's for seat?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119412c20[shape=Mrecord, label = "It's for drinking?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119412d00[shape=Mrecord, label = "It's for sleep?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119412de0[shape=Mrecord, label = "It shows the time?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119412ec0[shape=Mrecord, label = "Table", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119412fa0[shape=Mrecord, label = "Clock", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119413080[shape=Mrecord, label = "Bed", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119413160[shape=Mrecord, label = "Cup", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119413240[shape=Mrecord, label = "Chear", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119413320[shape=Mrecord, label = "Howler", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119413400[shape=Mrecord, label = "Nearly Headless Nick", style="filled",fillcolor="#F9EA6B"]
-POINT_0x6101194134e0[shape=Mrecord, label = "It's Hogwarts professor?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x6101194135c0[shape=Mrecord, label = "It's student?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x6101194136a0[shape=Mrecord, label = "It's death eater?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119413780[shape=Mrecord, label = "Garrick Ollivander", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119413860[shape=Mrecord, label = "woman?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119413940[shape=Mrecord, label = "Lucius Malfoy", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119413a20[shape=Mrecord, label = "Bellatrice Leistrange", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119413b00[shape=Mrecord, label = "It's girl?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119413be0[shape=Mrecord, label = "red hair color?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119413cc0[shape=Mrecord, label = "Harry Potter", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119413da0[shape=Mrecord, label = "Ron Weasley", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119413e80[shape=Mrecord, label = "Hermione Jean Granger", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119413f60[shape=Mrecord, label = "It's woman?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x610119414040[shape=Mrecord, label = "Professor of potions?", style="filled",fillcolor="#D7CF8D"]
-POINT_0x6101194146f0[shape=Mrecord, label = "Albus Percival Wulfric Brian Dumbledore", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119414610[shape=Mrecord, label = "Severus Snape", style="filled",fillcolor="#F9EA6B"]
-POINT_0x610119414120[shape=Mrecord, label = "Minerva McGonagall", style="filled",fillcolor="#F9EA6B"]
-POINT_0x6101194128a0 -> POINT_0x610119412980
-POINT_0x6101194128a0 -> POINT_0x6101194134e0
-POINT_0x610119412980 -> POINT_0x610119412a60
-POINT_0x610119412980 -> POINT_0x610119413400
-POINT_0x610119412a60 -> POINT_0x610119412b40
-POINT_0x610119412a60 -> POINT_0x610119413320
-POINT_0x610119412b40 -> POINT_0x610119412c20
-POINT_0x610119412b40 -> POINT_0x610119413240
-POINT_0x610119412c20 -> POINT_0x610119412d00
-POINT_0x610119412c20 -> POINT_0x610119413160
-POINT_0x610119412d00 -> POINT_0x610119412de0
-POINT_0x610119412d00 -> POINT_0x610119413080
-POINT_0x610119412de0 -> POINT_0x610119412ec0
-POINT_0x610119412de0 -> POINT_0x610119412fa0
-POINT_0x6101194134e0 -> POINT_0x6101194135c0
-POINT_0x6101194134e0 -> POINT_0x610119413f60
-POINT_0x6101194135c0 -> POINT_0x6101194136a0
-POINT_0x6101194135c0 -> POINT_0x610119413b00
-POINT_0x6101194136a0 -> POINT_0x610119413780
-POINT_0x6101194136a0 -> POINT_0x610119413860
-POINT_0x610119413860 -> POINT_0x610119413940
-POINT_0x610119413860 -> POINT_0x610119413a20
-POINT_0x610119413b00 -> POINT_0x610119413be0
-POINT_0x610119413b00 -> POINT_0x610119413e80
-POINT_0x610119413be0 -> POINT_0x610119413cc0
-POINT_0x610119413be0 -> POINT_0x610119413da0
-POINT_0x610119413f60 -> POINT_0x610119414040
-POINT_0x610119413f60 -> POINT_0x610119414120
-POINT_0x610119414040 -> POINT_0x6101194146f0
-POINT_0x610119414040 -> POINT_0x610119414610
+POINT_0x6048bbed38a0[shape=Mrecord, label = "It's alive?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed3980[shape=Mrecord, label = "It's casting?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed3a60[shape=Mrecord, label = "It's magic think?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed3b40[shape=Mrecord, label = "It's for seat?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed3c20[shape=Mrecord, label = "It's for drinking?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed3d00[shape=Mrecord, label = "It's for sleep?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed3de0[shape=Mrecord, label = "It shows the time?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed3ec0[shape=Mrecord, label = "Table", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed3fa0[shape=Mrecord, label = "Clock", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed4080[shape=Mrecord, label = "Bed", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed4160[shape=Mrecord, label = "Cup", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed4240[shape=Mrecord, label = "Chear", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed4320[shape=Mrecord, label = "Howler", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed4400[shape=Mrecord, label = "Nearly Headless Nick", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed44e0[shape=Mrecord, label = "It's Hogwarts professor?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed45c0[shape=Mrecord, label = "It's student?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed46a0[shape=Mrecord, label = "It's death eater?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed4780[shape=Mrecord, label = "Garrick Ollivander", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed4860[shape=Mrecord, label = "woman?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed4940[shape=Mrecord, label = "Lucius Malfoy", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed4a20[shape=Mrecord, label = "Bellatrice Leistrange", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed4b00[shape=Mrecord, label = "It's girl?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed4be0[shape=Mrecord, label = "red hair color?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed4cc0[shape=Mrecord, label = "It's Slytherin student?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed4da0[shape=Mrecord, label = "Harry Potter", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed4e80[shape=Mrecord, label = "He is stupit?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed5c30[shape=Mrecord, label = "Draco Malfoy", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed5b50[shape=Mrecord, label = "Gregory Goyle", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed4f60[shape=Mrecord, label = "Ron Weasley", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed5040[shape=Mrecord, label = "It is Ravenclaw student?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed5120[shape=Mrecord, label = "Hermione Jean Granger", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed5200[shape=Mrecord, label = "Luna Lovegood", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed52e0[shape=Mrecord, label = "It's woman?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed53c0[shape=Mrecord, label = "Professor of potions?", style="filled",fillcolor="#D7CF8D"]
+POINT_0x6048bbed54a0[shape=Mrecord, label = "Albus Percival Wulfric Brian Dumbledore", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed5580[shape=Mrecord, label = "Severus Snape", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed5660[shape=Mrecord, label = "Minerva McGonagall", style="filled",fillcolor="#F9EA6B"]
+POINT_0x6048bbed38a0 -> POINT_0x6048bbed3980
+POINT_0x6048bbed38a0 -> POINT_0x6048bbed44e0
+POINT_0x6048bbed3980 -> POINT_0x6048bbed3a60
+POINT_0x6048bbed3980 -> POINT_0x6048bbed4400
+POINT_0x6048bbed3a60 -> POINT_0x6048bbed3b40
+POINT_0x6048bbed3a60 -> POINT_0x6048bbed4320
+POINT_0x6048bbed3b40 -> POINT_0x6048bbed3c20
+POINT_0x6048bbed3b40 -> POINT_0x6048bbed4240
+POINT_0x6048bbed3c20 -> POINT_0x6048bbed3d00
+POINT_0x6048bbed3c20 -> POINT_0x6048bbed4160
+POINT_0x6048bbed3d00 -> POINT_0x6048bbed3de0
+POINT_0x6048bbed3d00 -> POINT_0x6048bbed4080
+POINT_0x6048bbed3de0 -> POINT_0x6048bbed3ec0
+POINT_0x6048bbed3de0 -> POINT_0x6048bbed3fa0
+POINT_0x6048bbed44e0 -> POINT_0x6048bbed45c0
+POINT_0x6048bbed44e0 -> POINT_0x6048bbed52e0
+POINT_0x6048bbed45c0 -> POINT_0x6048bbed46a0
+POINT_0x6048bbed45c0 -> POINT_0x6048bbed4b00
+POINT_0x6048bbed46a0 -> POINT_0x6048bbed4780
+POINT_0x6048bbed46a0 -> POINT_0x6048bbed4860
+POINT_0x6048bbed4860 -> POINT_0x6048bbed4940
+POINT_0x6048bbed4860 -> POINT_0x6048bbed4a20
+POINT_0x6048bbed4b00 -> POINT_0x6048bbed4be0
+POINT_0x6048bbed4b00 -> POINT_0x6048bbed5040
+POINT_0x6048bbed4be0 -> POINT_0x6048bbed4cc0
+POINT_0x6048bbed4be0 -> POINT_0x6048bbed4f60
+POINT_0x6048bbed4cc0 -> POINT_0x6048bbed4da0
+POINT_0x6048bbed4cc0 -> POINT_0x6048bbed4e80
+POINT_0x6048bbed4e80 -> POINT_0x6048bbed5c30
+POINT_0x6048bbed4e80 -> POINT_0x6048bbed5b50
+POINT_0x6048bbed5040 -> POINT_0x6048bbed5120
+POINT_0x6048bbed5040 -> POINT_0x6048bbed5200
+POINT_0x6048bbed52e0 -> POINT_0x6048bbed53c0
+POINT_0x6048bbed52e0 -> POINT_0x6048bbed5660
+POINT_0x6048bbed53c0 -> POINT_0x6048bbed54a0
+POINT_0x6048bbed53c0 -> POINT_0x6048bbed5580
 }

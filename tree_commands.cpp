@@ -12,8 +12,8 @@ void init_tree(Tree* tree)
 
     tree->root = create_node(FIRST_QUESTION); // Это первая ячейка (вопрос)
 
-    tree->root->right = add_new_node(FIRST_POSITIVE_ANS);
-    tree->root->left  = add_new_node(FIRST_NEGATIVE_ANS);
+    tree->root->right = create_node(FIRST_POSITIVE_ANS);
+    tree->root->left  = create_node(FIRST_NEGATIVE_ANS);
 
 }
 
@@ -29,14 +29,6 @@ Node* create_node(const Node_t* data)
     return new_node;
 }
 
-Node* add_new_node(const Node_t* data) 
-{
-
-    Node* new_node = create_node(data); 
-
-    return new_node;
-
-}
 
 void print_tree(Node* node)
 {   

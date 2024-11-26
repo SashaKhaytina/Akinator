@@ -39,12 +39,24 @@
 			}
 			{It's girl
 				{red hair color
-					{Harry Potter
+					{It's Slytherin student
+						{Harry Potter
+						}
+						{He is stupit
+							{Draco Malfoy
+							}
+							{Gregory Goyle
+							}
+						}
 					}
 					{Ron Weasley
 					}
 				}
-				{Hermione Jean Granger
+				{It is Ravenclaw student
+					{Hermione Jean Granger
+					}
+					{Luna Lovegood
+					}
 				}
 			}
 		}

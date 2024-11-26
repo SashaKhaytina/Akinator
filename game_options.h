@@ -12,7 +12,7 @@
 
 const char* const CRITERIA_RIGHT   = "YES";
 const char* const CRITERIA_LEFT    = "NO";
-const size_t      MAX_SIZE_COMMAND = 30;
+const size_t      START_CAPACITY   = 32;
 
 
 

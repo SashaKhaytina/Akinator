@@ -6,7 +6,7 @@
 typedef char Node_t; 
 
 const size_t MAX_SIZE_TEXT_NODE = 200;
-const size_t MAX_DEEP_TREE      = 30;
+const size_t MAX_DEEP_TREE      = 32;
 const char* const DATABASE      = "tree.txt";
 
 
