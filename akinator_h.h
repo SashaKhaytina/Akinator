@@ -24,7 +24,6 @@ struct Tree
 
 struct ForDump
 {
-    char commands[100][30];
     int dumps_counter;
 };
 

@@ -60,7 +60,7 @@ static void pass_spaces(int* point_current_letter, char* arr_file_tree)
 static void read_new_node(Node* current_node, int* point_current_letter, char* arr_file_tree, BranchDirection line)
 {
         *point_current_letter += 1;
-        // читаем имя
+
         int ind_name = 0;
         char name_node[MAX_SIZE_TEXT_NODE] = {};
         while (arr_file_tree[*point_current_letter] != '\n')
@@ -70,8 +70,6 @@ static void read_new_node(Node* current_node, int* point_current_letter, char* a
             ind_name++;
         }
 
-
-        // создаем ячеку с этим именем
         Node* new_node = create_node(name_node);
         if (line == RIGHT)
         {
@@ -101,8 +99,6 @@ static void print_tree_in_file(FILE* file, Node* node, size_t deep)
 }
 
 
-
-
 void get_tree(FILE* file, Tree* tree)
 {
     size_t len_text = size_file(file);
@@ -124,7 +120,6 @@ void get_tree(FILE* file, Tree* tree)
         ind_name++;
     }
 
-    // создаем ячеку с этим именем
     tree->root = create_node(name_root);
 
     fill_tree(tree->root, &point_current_letter, arr_file_tree);

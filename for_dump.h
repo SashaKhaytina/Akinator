@@ -10,8 +10,8 @@ const char* const FONT_COLOR       = "#F2EECB";
 const char* const DUMP_FILE        = "pictures/log.html";
 
 
-void dump              (Node* node, ForDump* st_dump); // рисует поддерево
-void to_do_log_file    (ForDump* st_dump);
+void dump          (Node* node, ForDump* st_dump);
+void to_do_log_file(ForDump* st_dump);
 
 
 #endif

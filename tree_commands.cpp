@@ -10,7 +10,7 @@ const Node_t* FIRST_NEGATIVE_ANS = "Stone";
 void init_tree(Tree* tree)
 {
 
-    tree->root = create_node(FIRST_QUESTION); // Это первая ячейка (вопрос)
+    tree->root = create_node(FIRST_QUESTION); 
 
     tree->root->right = create_node(FIRST_POSITIVE_ANS);
     tree->root->left  = create_node(FIRST_NEGATIVE_ANS);

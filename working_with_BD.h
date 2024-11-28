@@ -11,8 +11,8 @@ enum BranchDirection
     LEFT
 };
 
-void get_tree(FILE* file, Tree* tree);
-void create_file_tree  (Tree* tree);
+void get_tree        (FILE* file, Tree* tree);
+void create_file_tree(Tree* tree);
 
 
 #endif

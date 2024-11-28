@@ -9,9 +9,9 @@
 
 
 
-void  init_tree         (Tree* tree);         // Only for NEW tree
-Node* create_node       (const Node_t* data);
-void  print_tree        (Node* node);  
+void  init_tree  (Tree* tree);         // Only for NEW tree
+Node* create_node(const Node_t* data);
+void  print_tree (Node* node);  
 
 
 #endif

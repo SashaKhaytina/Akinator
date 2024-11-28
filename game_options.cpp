@@ -13,8 +13,6 @@
 
 
 
-
-
 static void          help_mode      ();
 static void          definition_mode(Tree* tree);
 static void          mystery_mode   (Tree* tree, ForDump* st_dump);
@@ -25,7 +23,7 @@ static StatusEndPlay play_mystery         (Node* perent, Node** last_node);
 static void          input_node_name      (char* arr);
 static void          definition           (Tree* tree, Node_t* object);
 static void          comparison           (Tree* tree, Node_t* object1, Node_t* object2);
-static bool          bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack, bool* found_object);
+static bool          bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack);
 static void          get_way_array        (int* way_to_object, Stack* stack);
 static void          characteristic_node  (Node** current_node, int* way_to_object, int current_deep);
 
@@ -66,12 +64,12 @@ void start_game()
 }
 
 
-
-
 static void help_mode()
 {
     printf("\n");
     PRINTF_YELLOW("Write "); PRINTF_GREEN("\"definition\""); PRINTF_YELLOW(" if you want to know word definition\n");
+    
+    PRINTF_YELLOW("Write "); PRINTF_GREEN("\"comparison\""); PRINTF_YELLOW(" if you want compare two words\n");
     
     PRINTF_YELLOW("Write "); PRINTF_GREEN("\"mystery\""); PRINTF_YELLOW(" if you want guess the word\n");
 
@@ -88,15 +86,6 @@ static void definition_mode(Tree* tree)
 
     input_node_name(word);
 
-    // char c = 0;
-    // int ind = 0;
-    // c = getchar();
-    // while ((c = getchar()) != '\n')
-    // {
-    //     word[ind] = c;
-    //     ind++;
-    // }
-
     definition(tree, word);
 
 }
@@ -110,24 +99,9 @@ static void comparison_mode(Tree* tree)
 
     PRINTF_BLUE("Write your first word\n");
     input_node_name(word1);
-    // printf("%s", word1);
-    // c = getchar();
-    // int ind = 0;
-    // while ((c = getchar()) != '\n')
-    // {
-    //     word1[ind] = c;
-    //     ind++;
-    // }
 
     PRINTF_BLUE("Write your second word\n");
     input_node_name(word2);
-    // ind = 0;
-    // while ((c = getchar()) != '\n')
-    // {
-    //     word2[ind] = c;
-    //     ind++;
-    // }
-
 
     comparison(tree, word1, word2);
 }
@@ -157,7 +131,7 @@ static void run_play(Tree* tree)
 
         case LOSE:
         {
-            PRINTF_RED("I am loser :(\n"); PRINTF_BLUE("What were you thinking about?\n"); // О ЧЕМ ТЫ ДУМАЛ????
+            PRINTF_RED("I am loser :(\n"); PRINTF_BLUE("What were you thinking about?\n");
             char* new_data = NULL;
             char input_data[MAX_SIZE_TEXT_NODE] = {};
             input_node_name(input_data);
@@ -189,7 +163,6 @@ static void run_play(Tree* tree)
 }
 
 
-
 static void input_node_name(char* arr)
 {
     char c = 0;
@@ -199,7 +172,6 @@ static void input_node_name(char* arr)
         arr[i] = c;
     }
 }
-
 
 
 static StatusEndPlay play_mystery(Node* perent, Node** last_node)
@@ -235,18 +207,14 @@ static StatusEndPlay play_mystery(Node* perent, Node** last_node)
 }
 
 
-// Чтобы сравнить - все поделить по функциям, и вывод просто делать отдельно. А там массивы сравнить.
-
 static void comparison(Tree* tree, Node_t* object1, Node_t* object2)
 {
     // To do func for this is stange
     Stack stack1 = {}; default_stack_ctor(&stack1, MAX_DEEP_TREE);
     Stack stack2 = {}; default_stack_ctor(&stack2, MAX_DEEP_TREE);
 
-    bool found_object1 = false;
-    bool found_object2 = false;
-    found_object1 = bilding_way_to_object(tree->root, object1, &stack1, &found_object1);
-    found_object2 = bilding_way_to_object(tree->root, object2, &stack2, &found_object2);
+    bool found_object1 = bilding_way_to_object(tree->root, object1, &stack1);
+    bool found_object2 = bilding_way_to_object(tree->root, object2, &stack2);
 
     // Why not?
     // bool found_object1 = bilding_way_to_object(tree->root, object1, &stack1, &found_object1);
@@ -276,32 +244,10 @@ static void comparison(Tree* tree, Node_t* object1, Node_t* object2)
 
             characteristic_node(&current_node, way_to_object1, i);
             printf("\n");
-            return; // only 1 different
-
-            // if (way_to_object1[i] == 1) // вправо
-            // {
-            //     printf("%s. ", current_node->data);
-            //     current_node = current_node->right;
-            // }
-            // else // влево
-            // {
-            //     printf("NO %s. ", current_node->data);
-            //     current_node = current_node->left;
-            // }
+            return; 
         }
 
         characteristic_node(&current_node, way_to_object1, i);
-
-        // if (way_to_object1[i] == 1) // вправо
-        // {
-        //     printf("%s. ", current_node->data);
-        //     current_node = current_node->right;
-        // }
-        // else // влево
-        // {
-        //     printf("NO %s. ", current_node->data);
-        //     current_node = current_node->left;
-        // }
     }
     printf("\n");
     stack_dtor(&stack1);
@@ -309,55 +255,32 @@ static void comparison(Tree* tree, Node_t* object1, Node_t* object2)
 }
 
 
-
-
-static void definition(Tree* tree, Node_t* object) // массив: [] (из да и нет) (А потом сверху восстановим)
+static void definition(Tree* tree, Node_t* object) // массив: [] (из да и нет)
 {
     Stack stack = {}; default_stack_ctor(&stack, MAX_DEEP_TREE);
 
-    bool found_object = false;
-    found_object = bilding_way_to_object(tree->root, object, &stack, &found_object);
+    bool found_object = bilding_way_to_object(tree->root, object, &stack);
 
     if (!found_object) PRINTF_BLUE("No this object in Tree\n");
-    else  // значит путь нашел
+    else  
     {
         int way_to_object[MAX_DEEP_TREE] = {}; 
         size_t len_way = stack.size;
 
         get_way_array(way_to_object, &stack);
 
-
-        // for (size_t i = 0; i < len_way; i++)
-        // {
-        //     size_t current_size = stack.size;
-        //     StackElem_t pop_elem = 0;
-        //     stack_pop(&stack, &pop_elem);
-        //     way_to_object[current_size - 1] = (int) pop_elem;
-        // }
-
-
         PRINTF_GREEN("Definition %s: ", object);
         Node* current_node = tree->root;
         for (size_t i = 0; i < len_way; i++)
         {
             characteristic_node(&current_node, way_to_object, i);
-
-            // if (way_to_object[i] == 1) // вправо
-            // {
-            //     printf("%s. ", current_node->data);
-            //     current_node = current_node->right;
-            // }
-            // else // влево
-            // {
-            //     printf("NO %s. ", current_node->data);
-            //     current_node = current_node->left;
-            // }
         }
 
         printf("\n");
     }
     stack_dtor(&stack);
 }
+
 
 static void get_way_array(int* way_to_object, Stack* stack)
 {
@@ -371,6 +294,7 @@ static void get_way_array(int* way_to_object, Stack* stack)
         way_to_object[current_size - 1] = (int) pop_elem;
     }
 }
+
 
 static void characteristic_node(Node** current_node, int* way_to_object, int current_deep)
 {
@@ -387,40 +311,27 @@ static void characteristic_node(Node** current_node, int* way_to_object, int cur
         *current_node = (*current_node)->left;
     }
 }
-// bool found_way(Tree* tree, Node_t* object, Stack* stack)
-// {
-//     bool found_object = false;
-
-//     found_object = bilding_way_to_object(tree->root, object, stack, &found_object);
-   
-// }
 
 
-static bool bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack, bool* found_object)
+static bool bilding_way_to_object(Node* current_node, Node_t* object, Stack* stack)
 {
-    // проверить на нужность found_object
-    if (*found_object == true) {printf("aaaaaaaaaaaaaaaaaa"); return true;}
-
-    if (strcmp(current_node->data, object) == 0)
-    {
-        *found_object = true;
-        return true;
-    }
+    if (strcmp(current_node->data, object) == 0) return true;
 
     if (current_node->right)
     {
         stack_push(stack, 1); // push 1 (вправо) 
-        if (bilding_way_to_object(current_node->right, object, stack, found_object)) return true;
+        if (bilding_way_to_object(current_node->right, object, stack)) return true;
         else 
         {
             StackElem_t pop_elem = 0;
             stack_pop(stack, &pop_elem); // pop
         }
     }
+
     if (current_node->left)
     {
         stack_push(stack, 0); // push 0 (влево)
-        if (bilding_way_to_object(current_node->left, object, stack, found_object)) return true;
+        if (bilding_way_to_object(current_node->left, object, stack)) return true;
         else 
         {
             StackElem_t pop_elem = 0;

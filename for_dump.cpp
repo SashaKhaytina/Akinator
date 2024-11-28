@@ -39,9 +39,7 @@ static void create_png(int num)
 }
 
 
-
-
-void dump(Node* node, ForDump* st_dump) // рисует поддерево
+void dump(Node* node, ForDump* st_dump)
 {
     st_dump->dumps_counter++;
     int number_of_dump = st_dump->dumps_counter;

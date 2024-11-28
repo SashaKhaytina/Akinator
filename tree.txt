@@ -28,7 +28,11 @@
 	{It's Hogwarts professor
 		{It's student
 			{It's death eater
-				{Garrick Ollivander
+				{This person in Order of the Phoenix
+					{Garrick Ollivander
+					}
+					{Nimfadora Tonks
+					}
 				}
 				{woman
 					{Lucius Malfoy
@@ -42,7 +46,7 @@
 					{It's Slytherin student
 						{Harry Potter
 						}
-						{He is stupit
+						{He is stupid
 							{Draco Malfoy
 							}
 							{Gregory Goyle
